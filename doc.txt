@@ -1,0 +1,43 @@
+El código presentado implementa un algoritmo para encontrar la **Subsecuencia Común Más Larga (LCS, por sus siglas en inglés)** entre dos cadenas de ADN utilizando programación dinámica. Este enfoque es eficiente para resolver problemas de comparación de secuencias, como en bioinformática.
+
+---
+
+### Explicación del método `findLCS`
+
+1. **Inicialización de variables y matriz DP**:  
+    - Se definen las longitudes de las dos cadenas de entrada (`seq1` y `seq2`) como `m` y `n`, respectivamente.  
+    - Luego, se crea una matriz bidimensional `dp` de tamaño `(m+1) x (n+1)` para almacenar los resultados parciales del cálculo de la LCS.  
+    - Cada celda `dp[i][j]` representa la longitud de la LCS entre los primeros `i` caracteres de `seq1` y los primeros `j` caracteres de `seq2`.
+
+2. **Llenado de la matriz DP**:  
+    - Se recorre la matriz `dp` utilizando dos bucles anidados.  
+    - Si los caracteres actuales de ambas cadenas coinciden (`seq1.charAt(i-1) == seq2.charAt(j-1)`), se incrementa el valor de la celda actual en 1 con respecto a la diagonal superior izquierda (`dp[i-1][j-1]`).  
+    - Si no coinciden, se toma el máximo entre el valor de la celda superior (`dp[i-1][j]`) y la celda izquierda (`dp[i][j-1]`).  
+    - Este proceso asegura que se construya la longitud de la LCS de manera acumulativa.
+
+3. **Depuración (Impresión de la matriz DP)**:  
+    - Para facilitar la comprensión del proceso, se imprime la matriz `dp` completa.  
+    - Esto permite visualizar cómo se construye la solución paso a paso.
+
+4. **Reconstrucción de la LCS**:  
+    - Una vez completada la matriz, se reconstruye la LCS recorriendo la matriz desde la esquina inferior derecha (`dp[m][n]`) hacia la esquina superior izquierda.  
+    - Si los caracteres actuales coinciden, se agregan al resultado y se avanza diagonalmente hacia arriba e izquierda.  
+    - Si no coinciden, se sigue el camino del valor máximo entre la celda superior y la izquierda.  
+    - Este proceso asegura que se obtenga la subsecuencia común más larga.
+
+5. **Inversión y retorno del resultado**:  
+    - Dado que la LCS se construye en orden inverso, se utiliza el método `reverse()` de `StringBuilder` para invertir la cadena antes de retornarla.
+
+---
+
+### Ejecución en el método `main`
+
+- En el método `main`, se definen dos cadenas de ADN (`seq1` y `seq2`) y se llama al método `findLCS` para calcular la LCS entre ellas.  
+- Finalmente, se imprime el resultado en la consola.
+
+---
+
+### Ejemplo de salida
+
+- Para las cadenas `seq1 = "ACGTGCA"` y `seq2 = "GACTTAC"`, la matriz DP se construye y la LCS resultante es `"ACTGA"`.  
+- La impresión de la matriz DP y el resultado final ayudan a verificar la correcta ejecución del algoritmo.

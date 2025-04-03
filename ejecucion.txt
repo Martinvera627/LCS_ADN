@@ -1,0 +1,2 @@
+javac LCS_ADN.java   # Compila el archivo
+java LCS_ADN         # Ejecuta el programa

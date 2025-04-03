@@ -1,0 +1,29 @@
+Explicación del código 
+
+Inicialización de variables y matriz DP:
+"Primero, definimos las longitudes de las cadenas de entrada y creamos una matriz bidimensional llamada dp. 
+Esta matriz almacenará los resultados parciales del cálculo de la LCS. 
+Cada celda dp[i][j] representa la longitud de la LCS entre los primeros i caracteres de la primera cadena 
+y los primeros j caracteres de la segunda cadena."
+
+Llenado de la matriz DP:
+"Luego, llenamos la matriz dp usando dos bucles anidados. 
+Si los caracteres actuales de ambas cadenas coinciden, incrementamos el valor de la celda actual en 1 
+con respecto a la diagonal superior izquierda. 
+Si no coinciden, tomamos el máximo entre el valor de la celda superior y la celda izquierda. 
+Este proceso asegura que construyamos la longitud de la LCS de manera acumulativa."
+
+Impresión de la matriz DP: 
+"Para depurar y entender mejor el proceso, imprimimos la matriz dp completa. 
+Esto nos permite visualizar cómo se construye la solución paso a paso."
+
+Reconstrucción de la LCS:
+"Una vez que la matriz está completa, reconstruimos la LCS recorriéndola desde la esquina inferior derecha 
+hacia la superior izquierda. 
+Si los caracteres coinciden, los agregamos al resultado. 
+Si no coinciden, seguimos el camino del valor máximo entre la celda superior y la izquierda. 
+Finalmente, invertimos la cadena resultante para obtener la LCS en el orden correcto."
+
+Ejecución del programa:
+"En el método main, definimos dos cadenas de ADN y llamamos al método findLCS para calcular la LCS entre ellas. 
+Por ejemplo, para las cadenas ACGTGCA y GACTTAC, el programa imprime la matriz DP y la LCS resultante, que es ACTGA."
